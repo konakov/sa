@@ -18,3 +18,10 @@ User.create!(name:  "Example User",
                activated_at: Time.zone.now)
   puts "created user no. #{n+1}"
 end
+
+users = User.take(6)
+500.times do |n|
+  content = Faker::Lorem.sentence(5)
+  users.each { |user| user.microposts.create!(content: content) }
+  puts "created m-p no. #{n+1} of 50"
+end
